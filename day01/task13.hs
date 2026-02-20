@@ -1,3 +1,3 @@
 myLenght :: [a] -> Int
 myLenght [] = 0
-myLenght (s:e) = 1 + myLenght e
+myLenght (_:e) = 1 + myLenght e
