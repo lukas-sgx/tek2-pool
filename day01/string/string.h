@@ -13,9 +13,7 @@
     #include <unistd.h>
     #include <string.h>
 
-typedef struct string_s string_t;
-
-struct string_s {
+typedef struct string_s {
     char *str;
     bool (*empty)(const string_t *this);
     size_t (*length)(const string_t *this);
@@ -23,7 +21,7 @@ struct string_s {
     void (*clear)(string_t *this);
     void (*append)(string_t *this, const char *str);
     void (*assign)(string_t *this, const char *str);
-};
+} string_t;
 
 void string_init(string_t *this, const char *s);
 void string_destroy(string_t *this);
