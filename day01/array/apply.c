@@ -9,6 +9,6 @@
 
 void apply(array_t *this, void *(*function)(void *))
 {
-    for (size_t i = 0; i < this->size; i++)
-        this->array_ptr[i] = function((void *)i);
+    for (size_t i = 0; i < this->len; i++)
+        this->array_table[i] = function((void *)i);
 }

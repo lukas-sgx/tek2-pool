@@ -9,5 +9,5 @@
 
 size_t size(array_t *this)
 {
-    return this->size;
+    return this->len;
 }

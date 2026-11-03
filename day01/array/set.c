@@ -9,8 +9,8 @@
 
 bool set(array_t *this, size_t index, void *value)
 {
-    if (this->size < index)
+    if (this->len < index)
         return false;
-    this->array_ptr[index] = value;
+    this->array_table[index] = value;
     return true;
 }

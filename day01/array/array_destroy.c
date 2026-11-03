@@ -9,7 +9,7 @@
 
 void array_destroy(array_t *this)
 {
-    if (!this || !this->array_ptr)
+    if (!this || !this->array_table)
         return;
-    free(this->array_ptr);
+    free(this->array_table);
 }

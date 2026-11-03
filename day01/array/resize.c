@@ -12,12 +12,12 @@ void resize(array_t *this, size_t size)
 {
     void **new_array = NULL;
 
-    new_array = realloc(this->array_ptr, sizeof(ptr_t) * (size + 1));
+    new_array = realloc(this->array_table, sizeof(void*) * (size + 1));
     if (!new_array)
         return;
-    for (size_t i = this->size; i < size; i++)
+    for (size_t i = this->len; i < size; i++)
         new_array[i] = NULL;
-    this->array_ptr = NULL;
-    this->array_ptr = new_array;
-    this->size = size;
+    this->array_table = NULL;
+    this->array_table = new_array;
+    this->len = size;
 }

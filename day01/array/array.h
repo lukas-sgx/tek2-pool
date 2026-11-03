@@ -13,15 +13,23 @@
     #include <unistd.h>
     #include <stddef.h>
 
-typedef void *(*ptr_t)(void *);
+typedef struct array_s array_t;
 
-typedef struct array_s {
-    void **array_ptr;
-    size_t size;
-} array_t;
+struct array_s {
+    void **array_table;
+    size_t len;
+
+    bool (*empty)(const array_t *this); 
+    size_t (*size)(array_t *this);
+    void (*resize)(array_t *this, size_t size);
+    void *(*get)(const array_t *this, size_t index);
+    bool (*set)(array_t *this, size_t index, void *value);
+    void (*apply)(array_t *this, void *(*function)(void *));
+};
 
 void array_init(array_t *this, size_t size);
 void array_destroy(array_t *this);
+
 bool empty(const array_t *this);
 size_t size(array_t *this);
 void resize(array_t *this, size_t size);

@@ -9,7 +9,7 @@
 
 void *get(const array_t *this, size_t index)
 {
-    if (this->size < index)
+    if (this->len < index)
         return NULL;
-    return (void *)this->array_ptr[index];
+    return (void *)this->array_table[index];
 }
