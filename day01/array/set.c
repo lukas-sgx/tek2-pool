@@ -9,7 +9,7 @@
 
 bool set(array_t *this, size_t index, void *value)
 {
-    if (this->len < index)
+    if (this->len < index || this->len > index)
         return false;
     this->array_table[index] = value;
     return true;
