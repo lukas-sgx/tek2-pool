@@ -19,7 +19,7 @@ struct array_s {
     void **array_table;
     size_t len;
 
-    bool (*empty)(const array_t *this); 
+    bool (*empty)(const array_t *this);
     size_t (*size)(array_t *this);
     void (*resize)(array_t *this, size_t size);
     void *(*get)(const array_t *this, size_t index);

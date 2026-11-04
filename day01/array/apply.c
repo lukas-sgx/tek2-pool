@@ -10,5 +10,5 @@
 void apply(array_t *this, void *(*function)(void *))
 {
     for (size_t i = 0; i < this->len; i++)
-        this->array_table[i] = function((void *)i);
+        this->array_table[i] = function(this->array_table[i]);
 }
