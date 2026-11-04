@@ -56,12 +56,13 @@ myLength [] = 0
 myLength (_:x) = 1 + myLength x
 
 myNth :: [a] -> Int -> a
-myNth [] x = error "Empty list"
+myNth [] _ = error "Empty list"
+myNth (a:as) 0 = a
 myNth (a:as) x
     | x < 0 = error "Out of bounds"
-    | x >= myLength as = error "Out of bounds"
-    | x == 0 = a
-myNth (_:a) x = myNth a (x-1)
+    | x > myLength as = error "Out of bounds"
+    | otherwise = myNth as (x - 1)
+
 
 myTake :: Int -> [a] -> [a]
 myTake _ [] = []
