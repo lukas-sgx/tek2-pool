@@ -120,3 +120,24 @@ myFilter f a = filt f a []
         filt f (s:e) acc
             | f s = filt f e (s:acc)
             | otherwise = filt f e acc
+
+myFoldl :: (b -> a -> b) -> b -> [a] -> b
+myFoldl _ acc [] = acc
+myFoldl func acc (x:xs) = myFoldl func (func acc x) xs
+
+myFoldr :: (a -> b -> b) -> b -> [a] -> b
+myFoldr _ b [] = b
+myFoldr func b (x:xs) = func x (myFoldr func b xs)
+
+myPartition :: (a -> Bool) -> [a] -> ([a], [a])
+myPartition _ [] = ([], [])
+myPartition func (x:xs) = 
+    case myPartition func xs of
+        (yes, no) -> if func x then (x : yes, no) else (yes, x : no)
+
+-- myQuickSort :: (a -> a -> Bool) -> [a] -> [a]
+-- myQuickSort _ [] = []
+-- myQuickSort _ [a] = [a]
+-- myQuickSort func (x:xs) =
+--     case myQuickSort func xs of
+--         (true, false) -> if func (x, myFst xs) then mySwap x xs else [x]
